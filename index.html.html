@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baptista Global Resources, Chinwendu Marybaptista Nwachukwu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wine: #7B1E1E;
+    --blue: #1933C2;
+    --white: #FFFFFF;
+    --cream: #FAF8F5;
+    --dark: #0D0D0D;
+    --gray: #6B6B6B;
+    --light-gray: #F0EEE9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 6%;
+    background: rgba(250,248,245,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(123,30,30,0.1);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--wine);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--dark); text-decoration: none;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--wine); }
+  .nav-cta {
+    background: var(--wine); color: var(--white);
+    padding: 10px 24px; border-radius: 2px;
+    font-size: 0.8rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 80px 6% 80px 8%;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--blue); color: var(--white);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 16px; margin-bottom: 28px;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--dark); margin-bottom: 8px;
+  }
+  .hero-name .accent { color: var(--wine); }
+  .hero-title {
+    font-size: 1rem; font-weight: 500;
+    color: var(--blue); letter-spacing: 0.04em;
+    margin-bottom: 24px; text-transform: uppercase;
+  }
+  .hero-desc {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--gray); max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--wine); color: var(--white);
+    padding: 14px 32px; border-radius: 2px;
+    font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--wine);
+    padding: 14px 32px; border-radius: 2px;
+    font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 2px solid var(--wine); transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--wine); color: var(--white); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 48px;
+    padding-top: 40px; border-top: 1px solid rgba(123,30,30,0.15);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--wine);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: var(--gray);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 2px; display: block;
+  }
+
+  .hero-right {
+    position: relative; height: 100vh;
+    background: var(--wine);
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, var(--wine) 0%, #4a1010 100%);
+    z-index: 1;
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    opacity: 0.85; mix-blend-mode: luminosity;
+    position: relative; z-index: 2;
+    filter: contrast(1.1);
+  }
+  .hero-img-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40%; z-index: 3;
+    background: linear-gradient(transparent, var(--wine));
+  }
+  .hero-badge {
+    position: absolute; bottom: 48px; left: -24px;
+    background: var(--white); padding: 20px 28px;
+    z-index: 4; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .hero-badge-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem; color: var(--dark); font-weight: 700;
+  }
+  .hero-badge-sub {
+    font-size: 0.72rem; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 8%; }
+  .section-tag {
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--dark); margin-bottom: 20px;
+  }
+  .section-title .accent { color: var(--wine); }
+  .section-desc {
+    font-size: 1rem; line-height: 1.8;
+    color: var(--gray); max-width: 560px;
+    margin-bottom: 60px;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 80px; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img {
+    width: 100%; border-radius: 0;
+    display: block; filter: grayscale(20%);
+  }
+  .about-img-border {
+    position: absolute; top: -16px; left: -16px; right: 16px; bottom: 16px;
+    border: 3px solid var(--wine); z-index: -1;
+  }
+  .about-content { padding-left: 20px; }
+  .about-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; line-height: 1.6;
+    color: var(--dark); margin-bottom: 20px;
+    font-style: italic;
+  }
+  .about-text {
+    font-size: 0.95rem; line-height: 1.85;
+    color: var(--gray); margin-bottom: 16px;
+  }
+  .about-certs {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 32px;
+  }
+  .cert-tag {
+    background: var(--light-gray);
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--dark); padding: 6px 14px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--white);
+    padding: 40px 36px;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    cursor: default;
+  }
+  .service-card:hover {
+    border-left-color: var(--wine);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 20px; display: block;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 12px;
+  }
+  .service-desc {
+    font-size: 0.88rem; line-height: 1.7;
+    color: var(--gray);
+  }
+
+  /* ── TOOLS ── */
+  .tools { background: var(--dark); }
+  .tools .section-title { color: var(--white); }
+  .tools .section-desc { color: rgba(255,255,255,0.5); }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+  .tool-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 16px; text-align: center;
+    font-size: 0.8rem; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .tool-item:hover {
+    background: var(--wine);
+    color: var(--white);
+    border-color: var(--wine);
+  }
+
+  /* ── FREE GUIDES ── */
+  .guides { background: var(--blue); }
+  .guides .section-title { color: var(--white); }
+  .guides .section-tag { color: rgba(255,255,255,0.6); }
+  .guides .section-desc { color: rgba(255,255,255,0.7); }
+  .guides-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .guide-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 40px 32px;
+    transition: all 0.3s;
+  }
+  .guide-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-4px);
+  }
+  .guide-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    display: block; margin-bottom: 16px;
+  }
+  .guide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .guide-desc {
+    font-size: 0.85rem; color: rgba(255,255,255,0.65);
+    line-height: 1.7; margin-bottom: 28px;
+  }
+  .guide-btn {
+    display: inline-block;
+    background: var(--wine); color: var(--white);
+    padding: 12px 24px; font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .guide-btn:hover { background: var(--white); color: var(--wine); }
+
+  /* ── SOCIAL PROOF ── */
+  .proof { background: var(--cream); }
+  .proof-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; margin-bottom: 80px;
+  }
+  .proof-card {
+    background: var(--white); padding: 48px 36px;
+    text-align: center;
+  }
+  .proof-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900;
+    color: var(--wine); display: block; margin-bottom: 8px;
+  }
+  .proof-label {
+    font-size: 0.78rem; color: var(--gray);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--wine); padding: 100px 8%;
+    text-align: center;
+  }
+  .cta-section .section-title { color: var(--white); margin-bottom: 16px; }
+  .cta-section .section-desc {
+    color: rgba(255,255,255,0.75); margin: 0 auto 48px;
+    max-width: 520px;
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--white); color: var(--wine);
+    padding: 16px 40px; font-size: 0.88rem;
+    font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-white:hover { background: var(--blue); color: var(--white); }
+  .btn-outline-white {
+    background: transparent; color: var(--white);
+    padding: 16px 40px; font-size: 0.88rem;
+    font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); padding: 60px 8%;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .footer-brand span { color: var(--wine); }
+  .footer-desc {
+    font-size: 0.83rem; color: rgba(255,255,255,0.4);
+    line-height: 1.7; margin-bottom: 20px;
+  }
+  .footer-rc {
+    font-size: 0.72rem; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+  .footer-links h4 {
+    font-size: 0.72rem; font-weight: 600;
+    color: rgba(255,255,255,0.4); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 20px;
+  }
+  .footer-links a {
+    display: block; font-size: 0.85rem;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    margin-bottom: 10px; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--wine); }
+  .footer-contact h4 {
+    font-size: 0.72rem; font-weight: 600;
+    color: rgba(255,255,255,0.4); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 20px;
+  }
+  .footer-contact p {
+    font-size: 0.85rem; color: rgba(255,255,255,0.6);
+    margin-bottom: 10px; line-height: 1.6;
+  }
+  .footer-contact a {
+    color: var(--wine); text-decoration: none;
+  }
+  .footer-bottom {
+    background: var(--dark);
+    padding: 20px 8%; border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 0.75rem; color: rgba(255,255,255,0.25);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    animation: fadeIn 0.8s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 50vh; }
+    .hero-badge { left: 16px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .guides-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Baptista<span>Global</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#guides">Free Guides</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://calendly.com/chinwendunwachukwu/1-1-discovery-call" class="nav-cta" target="_blank">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-tag fade-in">AI Automation Expert & Founder</span>
+    <h1 class="hero-name fade-in">
+      Chinwendu<br><span class="accent">Marybaptista</span><br>Nwachukwu
+    </h1>
+    <p class="hero-title fade-in">Workflow Automation, CRM Integration, AI Systems</p>
+    <p class="hero-desc fade-in">
+      I help businesses stop drowning in manual tasks by building smart automation systems that work around the clock, so you can focus on what actually grows your business.
+    </p>
+    <div class="hero-buttons fade-in">
+      <a href="https://calendly.com/chinwendunwachukwu/1-1-discovery-call" class="btn-primary" target="_blank">Book Free Call</a>
+      <a href="#guides" class="btn-secondary">Free Resources</a>
+    </div>
+    <div class="hero-stats fade-in">
+      <div>
+        <span class="stat-num">9,800+</span>
+        <span class="stat-label">LinkedIn Followers</span>
+      </div>
+      <div>
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Students Mentored</span>
+      </div>
+      <div>
+        <span class="stat-num">22K+</span>
+        <span class="stat-label">TikTok Followers</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://res.cloudinary.com/dxztjpjyk/image/upload/f_auto,q_auto/1000150466_pomka6.jpg" alt="Baptista" class="hero-img" onerror="this.style.opacity='0'">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-text">Baptista Global Resources</div>
+      <div class="hero-badge-sub">RC No. 7875862 · Incorporated 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="https://res.cloudinary.com/dxztjpjyk/image/upload/f_auto,q_auto/1000150466_pomka6.jpg" alt="Baptista Professional" class="about-img" onerror="this.parentElement.style.background='#7B1E1E'; this.parentElement.style.minHeight='400px'">
+      <div class="about-img-border"></div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">About Me</span>
+      <h2 class="section-title">Engineering mind.<br><span class="accent">Business heart.</span></h2>
+      <p class="about-intro">"I don't just set up tools, I build systems that free people's time and grow their revenue."</p>
+      <p class="about-text">
+        I'm Baptista, founder of Baptista Global Resources NIG LTD and an AI automation specialist with a background in Electrical & Electronic Engineering (OND, HND, PGD) and an MBA in Management.
+      </p>
+      <p class="about-text">
+        Over the past several years I've worked across sales engineering, customer operations, and executive support, and I've seen firsthand how much time businesses waste on tasks that should be automated. That's why I transitioned into workflow automation and AI systems.
+      </p>
+      <p class="about-text">
+        Today I help solopreneurs, small businesses, and corporate teams build CRM systems, automation workflows, and lead generation pipelines that run themselves.
+      </p>
+      <div class="about-certs">
+        <span class="cert-tag">DevOps & Cloud Security</span>
+        <span class="cert-tag">Software Engineering, ALX</span>
+        <span class="cert-tag">AI & Career Essentials, ALX</span>
+        <span class="cert-tag">PMP Certified</span>
+        <span class="cert-tag">Social Media Marketing</span>
+        <span class="cert-tag">MBA, Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="section-tag">What I Do</span>
+  <h2 class="section-title">Services that <span class="accent">actually move</span><br>the needle</h2>
+  <p class="section-desc">Every service is built around one goal, saving you time and helping your business grow without burning out.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">Workflow Automation</div>
+      <p class="service-desc">Custom automation workflows using Zapier, Make.com, and n8n that eliminate repetitive tasks and keep your business running 24/7.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📊</span>
+      <div class="service-name">CRM Setup & Integration</div>
+      <p class="service-desc">Full CRM configuration using HubSpot, GoHighLevel, Airtable, or Zoho, connected to your lead sources and automated follow-ups.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔗</span>
+      <div class="service-name">API Integration</div>
+      <p class="service-desc">Connect your tools and platforms so data flows automatically between them, no more manual copying, no more missed leads.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <div class="service-name">Social Media Management</div>
+      <p class="service-desc">Content strategy, scheduling, and management across LinkedIn, Facebook, TikTok, and YouTube, consistent presence without the daily hustle.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Lead Generation</div>
+      <p class="service-desc">End-to-end lead capture systems, from form to follow-up, that bring in qualified leads and nurture them automatically.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💼</span>
+      <div class="service-name">LinkedIn & Upwork Optimisation</div>
+      <p class="service-desc">Profile overhaul and positioning strategy that attracts the right clients and opportunities, not just connections.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎬</span>
+      <div class="service-name">Content Creation</div>
+      <p class="service-desc">Scripts, hooks, captions, and full content strategy across all platforms, built around your brand and your audience.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🖥️</span>
+      <div class="service-name">IT & Admin Support</div>
+      <p class="service-desc">Cloud platform management (AWS, GCP, Azure), data entry, system administration, and technical support for your operations.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎞️</span>
+      <div class="service-name">Video Editing</div>
+      <p class="service-desc">Professional video editing for TikTok, YouTube, and Facebook, optimised for engagement and brand consistency.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📣</span>
+      <div class="service-name">Ad Management</div>
+      <p class="service-desc">Facebook and LinkedIn ad setup, management, and optimisation, focused on ROI, not just impressions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools" id="tools">
+  <span class="section-tag" style="color:rgba(255,255,255,0.5)">My Tech Stack</span>
+  <h2 class="section-title" style="color:var(--white)">Tools I work<br><span style="color:var(--wine)">with daily</span></h2>
+  <p class="section-desc">20+ tools across automation, CRM, cloud, design, and content.</p>
+  <div class="tools-grid">
+    <div class="tool-item">Make.com</div>
+    <div class="tool-item">Zapier</div>
+    <div class="tool-item">n8n</div>
+    <div class="tool-item">Airtable</div>
+    <div class="tool-item">GoHighLevel</div>
+    <div class="tool-item">Monday.com</div>
+    <div class="tool-item">Notion</div>
+    <div class="tool-item">HubSpot</div>
+    <div class="tool-item">Apollo</div>
+    <div class="tool-item">Lemlist</div>
+    <div class="tool-item">Zoho</div>
+    <div class="tool-item">Freshdesk</div>
+    <div class="tool-item">Salesforce</div>
+    <div class="tool-item">Zendesk</div>
+    <div class="tool-item">AWS</div>
+    <div class="tool-item">Google Cloud</div>
+    <div class="tool-item">Microsoft Azure</div>
+    <div class="tool-item">Canva</div>
+    <div class="tool-item">CapCut</div>
+    <div class="tool-item">Adobe PS</div>
+    <div class="tool-item">Asana</div>
+    <div class="tool-item">Trello</div>
+    <div class="tool-item">Jira</div>
+    <div class="tool-item">GetLead</div>
+  </div>
+</section>
+
+<!-- FREE GUIDES -->
+<section class="guides" id="guides">
+  <span class="section-tag">Free Resources</span>
+  <h2 class="section-title" style="color:var(--white)">Start here, it's <span style="color:rgba(255,255,255,0.4)">completely free</span></h2>
+  <p class="section-desc">Three practical guides that give you real, actionable steps to automate your business today.</p>
+  <div class="guides-grid">
+    <div class="guide-card">
+      <span class="guide-num">01</span>
+      <div class="guide-title">5 Manual Tasks Every Small Business Should Automate Today</div>
+      <p class="guide-desc">Stop wasting hours every week. These 5 tasks can run on autopilot using free tools, starting today.</p>
+      <a href="https://1drv.ms/b/c/3e7a212b62cf78e6/IQDj3xl7740CRJICG5Gj5krKATQRj8_Grpxrr4c9lRGQYRI?download=1" class="guide-btn" target="_blank">Download Free</a>
+    </div>
+    <div class="guide-card">
+      <span class="guide-num">02</span>
+      <div class="guide-title">How to Save 10 Hours a Week Using Free Automation Tools</div>
+      <p class="guide-desc">A step-by-step guide showing exactly where your hours are going and how to take them back permanently.</p>
+      <a href="https://1drv.ms/b/c/3e7a212b62cf78e6/IQDX3ITjrrMJSJQCgSTccHJhAfvTEhPmF_cQ8aInTuUvSmo?download=1" class="guide-btn" target="_blank">Download Free</a>
+    </div>
+    <div class="guide-card">
+      <span class="guide-num">03</span>
+      <div class="guide-title">The Simple CRM Setup Guide for Solopreneurs</div>
+      <p class="guide-desc">Track your leads, follow up consistently, and never lose a client again, with a system you can set up in 2 hours.</p>
+      <a href="https://1drv.ms/b/c/3e7a212b62cf78e6/IQAcf7KBVr0_R4-QKWR5Zcd9ARNMdeHGjbJkqYsPeXlEcFA?download=1" class="guide-btn" target="_blank">Download Free</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof" id="proof">
+  <span class="section-tag">By The Numbers</span>
+  <h2 class="section-title">Results that <span class="accent">speak</span></h2>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <span class="proof-num">9,800+</span>
+      <span class="proof-label">LinkedIn Followers</span>
+    </div>
+    <div class="proof-card">
+      <span class="proof-num">22K+</span>
+      <span class="proof-label">TikTok Followers</span>
+    </div>
+    <div class="proof-card">
+      <span class="proof-num">30+</span>
+      <span class="proof-label">Students Mentored</span>
+    </div>
+    <div class="proof-card">
+      <span class="proof-num">5+</span>
+      <span class="proof-label">Years Experience</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section style="background:var(--white); padding:100px 8%;" id="projects">
+  <span class="section-tag">Portfolio</span>
+  <h2 class="section-title">Real projects.<br><span class="accent">Real results.</span></h2>
+  <p class="section-desc">Five live projects across automation, DevOps, and CRM, each one solving a real business problem.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px;">
+
+    <div style="border:1px solid #F0EEE9; padding:36px;">
+      <div style="background:#7B1E1E; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:20px;">Project 01</div>
+      <h3 style="font-family:Playfair Display,serif; font-size:1.2rem; font-weight:700; margin-bottom:12px;">Client Onboarding System</h3>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:16px;">Built an automated client onboarding system using Airtable that guides new clients through every step, eliminating manual follow-ups and delays.</p>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">Airtable</span>
+      <br><br><a href="https://youtu.be/l78h_EJvdpg" target="_blank" style="background:#0D0D0D; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase;">Watch Demo</a>
+    </div>
+
+    <div style="border:1px solid #F0EEE9; padding:36px;">
+      <div style="background:#1933C2; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:20px;">Project 02</div>
+      <h3 style="font-family:Playfair Display,serif; font-size:1.2rem; font-weight:700; margin-bottom:12px;">Sales Workflow Automation</h3>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:8px;"><strong>Problem:</strong> Leads not followed up consistently, lost sales and missed opportunities.</p>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:8px;"><strong>Solution:</strong> Automated workflow to track leads, send follow-ups, and manage pipeline stages.</p>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:16px;"><strong>Result:</strong> Improved response time by 25% with better lead conversion.</p>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">Zapier</span>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px;">Airtable</span>
+      <br><br><a href="https://youtu.be/iAFs3FPXBOA" target="_blank" style="background:#0D0D0D; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase;">Watch Demo</a>
+    </div>
+
+    <div style="border:1px solid #F0EEE9; padding:36px;">
+      <div style="background:#7B1E1E; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:20px;">Project 03</div>
+      <h3 style="font-family:Playfair Display,serif; font-size:1.2rem; font-weight:700; margin-bottom:12px;">Task Management System</h3>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:8px;"><strong>Problem:</strong> Teams struggled managing tasks and meeting deadlines due to poor organization.</p>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:8px;"><strong>Solution:</strong> Centralized Airtable system to assign, monitor, and manage tasks with automated reminders.</p>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:16px;"><strong>Result:</strong> Improved productivity and on-time project delivery.</p>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px;">Airtable</span>
+      <br><br><a href="https://youtu.be/yD9wl8Bfbyg" target="_blank" style="background:#0D0D0D; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase;">Watch Demo</a>
+    </div>
+
+    <div style="border:1px solid #F0EEE9; padding:36px;">
+      <div style="background:#1933C2; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:20px;">Project 04</div>
+      <h3 style="font-family:Playfair Display,serif; font-size:1.2rem; font-weight:700; margin-bottom:12px;">CloudForge13, Bank App DevOps</h3>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:8px;"><strong>Scope:</strong> Led a 28-person team deploying a full bank application using enterprise DevOps practices.</p>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:16px;"><strong>Delivered:</strong> AWS infrastructure with Terraform, CI/CD via GitHub Actions, Dockerized deployments, ArgoCD, Datadog monitoring and Slack alerts.</p>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">AWS</span>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">Docker</span>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">Kubernetes</span>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px; margin-right:6px;">Terraform</span>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px;">ArgoCD</span>
+      <br><br><a href="https://youtube.com/watch?v=RZdpkmaGqyo" target="_blank" style="background:#0D0D0D; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase;">Watch Demo</a>
+    </div>
+
+    <div style="border:1px solid #F0EEE9; padding:36px;">
+      <div style="background:#7B1E1E; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:20px;">Project 05</div>
+      <h3 style="font-family:Playfair Display,serif; font-size:1.2rem; font-weight:700; margin-bottom:12px;">Full Portfolio, Canva Showcase</h3>
+      <p style="font-size:0.85rem; color:#6B6B6B; line-height:1.7; margin-bottom:16px;">A detailed visual portfolio showcasing all projects, skills, and services, designed and published on Canva with case studies and results across all areas of expertise.</p>
+      <span style="background:#F0EEE9; font-size:0.72rem; font-weight:600; padding:4px 12px;">Canva</span>
+      <br><br>
+      <a href="https://canva.link/5z2gwur99d8z87f" target="_blank" style="background:#7B1E1E; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase; margin-right:10px;">View Portfolio</a>
+      <a href="https://github.com/MaryBaptista" target="_blank" style="background:#0D0D0D; color:#fff; padding:10px 20px; font-size:0.78rem; font-weight:600; text-decoration:none; text-transform:uppercase;">GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--cream); padding:100px 8%;" id="testimonials">
+  <span class="section-tag">What People Say</span>
+  <h2 class="section-title">Real words from<br><span class="accent">real people.</span></h2>
+  <p class="section-desc">11 LinkedIn recommendations and multiple 5-star reviews. Here are a few that stand out.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px;">
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--wine);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;Chinwendu&rsquo;s expertise in streamlining processes with automation tools, particularly Airtable, was invaluable in enhancing our internal systems. Her contributions were crucial in automating routine administrative tasks. I strongly recommend her for any roles in workflow automation.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">Santoma Joel</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Director &mdash; Truth Recruitment Ltd</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Client &middot; March 2026</div>
+      </div>
+    </div>
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--blue);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;Working with Chinwendu was an absolute game-changer. I entrusted her with optimizing my LinkedIn and Upwork profiles and the results were beyond what I expected. I could hardly recognize my profiles afterwards because of how professional, clear, and impactful they became.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">Rita Usikaro</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Data Analyst | Power BI &middot; SQL &middot; Python</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Client &middot; August 2025 &middot; 5.0 stars</div>
+      </div>
+    </div>
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--wine);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;I can confidently say she is one of the most dedicated and strategically oriented coaches I have met. What stands out most is her patience and attentiveness. She always ensured I fully understood each concept and never rushed the process. Working with her made a big difference in my journey.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">Florentine Mugisha</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Executive Assistant | Digital Marketing</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Client &middot; August 2025 &middot; 5.0 stars</div>
+      </div>
+    </div>
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--blue);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;I enjoyed working with Chinwendu. Her services are the best. I received more messages from recruiters after she worked on my profile. She is the best.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">Pretty Phale</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Executive Operations Partner | CEO Support</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Client &middot; August 2025 &middot; 5.0 stars</div>
+      </div>
+    </div>
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--wine);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;Chiwendu is an excellent professional who pays attention to details and is highly dedicated to delivering optimal results on time. She beats deadlines always with excellence. Every team needs her kind.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">Oluwaseun Abegunde R.Eng, MNSE</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Electrical Engineer | Project Manager</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Senior Colleague &middot; October 2024</div>
+      </div>
+    </div>
+    <div style="background:var(--white); padding:40px 36px; border-top:4px solid var(--blue);">
+      <div style="color:#DAA520; margin-bottom:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:0.9rem; color:var(--gray); line-height:1.8; margin-bottom:24px; font-style:italic;">&ldquo;Working with Chinwendu opened my mind to many things I never knew about LinkedIn. She taught me everything I needed to know and I am currently applying those strategies and seeing real results.&rdquo;</p>
+      <div style="border-top:1px solid var(--light-gray); padding-top:16px;">
+        <div style="font-weight:700; font-size:0.9rem; color:var(--dark);">John Chizarum</div>
+        <div style="font-size:0.78rem; color:var(--blue); margin-top:2px;">Content Marketer | LinkedIn Creator</div>
+        <div style="font-size:0.72rem; color:var(--gray); margin-top:2px;">Client &middot; March 2025 &middot; 5.0 stars</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="section-title">Ready to automate<br>your business?</h2>
+  <p class="section-desc">Book a free 30-minute call. We'll talk about your business, identify what's slowing you down, and map out exactly what needs to be automated first.</p>
+  <div class="cta-buttons">
+    <a href="https://calendly.com/chinwendunwachukwu/1-1-discovery-call" class="btn-white" target="_blank">Book Free 30-Min Call</a>
+    <a href="mailto:baptistaglobalresource@gmail.com" class="btn-outline-white">Send an Email</a>
+    <a href="https://wa.me/2349024577981" target="_blank" class="btn-outline-white">WhatsApp Me</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Baptista<span>Global</span></div>
+    <p class="footer-desc">Empowering businesses with tech, automation and sustainable growth.</p>
+    <p class="footer-rc">RC No. 7875862 · Incorporated August 2024<br>Federal Republic of Nigeria</p>
+  </div>
+  <div class="footer-links">
+    <h4>Quick Links</h4>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#tools">Tools</a>
+    <a href="#guides">Free Guides</a>
+    <a href="https://calendly.com/chinwendunwachukwu/1-1-discovery-call" target="_blank">Book a Call</a>
+  </div>
+  <div class="footer-contact">
+    <h4>Contact</h4>
+    <p><a href="mailto:baptistaglobalresource@gmail.com">baptistaglobalresource@gmail.com</a></p>
+    <p><a href="https://wa.me/2349024577981" target="_blank">WhatsApp: +234 902 457 7981</a></p>
+    <p><a href="https://linkedin.com/in/chinwendu-nwachukwu1" target="_blank">LinkedIn</a></p>
+    <p><a href="https://linkedin.com/company/baptista-global-resources" target="_blank">Company Page</a></p>
+    <p>Port Harcourt, Rivers State, Nigeria</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Baptista Global Resources NIG LTD. All rights reserved.</p>
+  <p>Empowering Businesses with Tech, Automation & Sustainable Growth</p>
+</div>
+
+</body>
+</html>
