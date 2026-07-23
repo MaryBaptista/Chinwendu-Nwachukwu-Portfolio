@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting to your guide</title>
+<meta name="robots" content="noindex">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    font-family: 'Outfit', Arial, sans-serif;
+    color: #1933C2;
+    text-align: center;
+  }
+  .box {
+    padding: 20px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #7B1E1E;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+  a {
+    color: #1933C2;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Sending you to your guide</h1>
+    <p id="message">Please wait a moment.</p>
+  </div>
+
+  <script>
+    const guideLinks = {
+      "5_manual_tasks": "https://1drv.ms/b/c/3e7a212b62cf78e6/IQDj3x1I740CRJICG5Gj5krKATQRj8_Grpxrr4c91RGQYRI",
+      "10_hours_saved": "https://1drv.ms/b/c/3e7a212b62cf78e6/IQDX3ITjrrMJSJQCgSTccHJhAfvTEhPmF_cQ8aInTuUvSmo",
+      "crm_setup": "https://1drv.ms/b/c/3e7a212b62cf78e6/IQAcf7KBVr0_R4-QkWR5Zcd9ARNMdeHGjbJkqYsPeX1EcFA",
+      "7_signs_systems": "https://1drv.ms/b/c/3e7a212b62cf78e6/IQDeeGCohD07RayGAcCrSDGzAWDTAp1enFhNkqd3Vp0qfUk"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const guide = params.get("guide");
+    const target = guideLinks[guide];
+
+    if (target) {
+      window.location.replace(target);
+    } else {
+      document.getElementById("message").innerHTML =
+        "We could not find that guide. <a href='https://baptista-global-resources.netlify.app'>Return to the homepage</a> and try again.";
+    }
+  </script>
+</body>
+</html>
